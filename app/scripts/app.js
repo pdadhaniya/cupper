@@ -9,6 +9,7 @@
  *
  * Main module of the application.
  */
+ 
 var app = angular
   .module('cupperApp', [
     'ngAnimate',
@@ -27,9 +28,9 @@ var app = angular
         templateUrl: 'views/play.html',
         controller: 'PlayCtrl'
       })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
+      .when('/play/:id', {
+        templateUrl: 'views/play.html',
+        controller: 'PlayCtrl'
       })
       .otherwise({
         redirectTo: '/'
