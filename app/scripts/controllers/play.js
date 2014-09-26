@@ -227,8 +227,7 @@ app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 	$scope.allDecks = Deck.all;
 
 	if ($routeParams.gameId) {
-		$scope.game = Deck.find($routeParams.gameId, "callback");
-		
+		$scope.game = Deck.find($routeParams.gameId, $routeParams.gameId);
 	}
 
 	var pIndex = 0;
@@ -240,6 +239,10 @@ app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 		})
 	}
 
+	$scope.deleteCard = function(card) {
+		Deck.delete(card, $routeParams.gameId);
+	}
+
 	$scope.nextCard = function(card) {
 
 		if ($scope.game.length > 0) {
@@ -247,7 +250,7 @@ app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 
 			$scope.currentCard = $scope.game[cIndex];
 			
-			Deck.delete(card);
+			Deck.delete(card, $routeParams.gameId);
 
 			if (pIndex >= $scope.users.length-1 ) {
 				pIndex = 0;

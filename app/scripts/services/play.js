@@ -11,15 +11,27 @@ app.factory('Deck',
 			create: function (deck) {
 				return decks.$add(deck);
 			},
-			find: function (deckId, callback) {
-				if (callback) {
-					console.log('hey');
+			find: function (deckId, gameId) {
+				if (gameId) {
+					console.log(gameId);
 				}
 				return $firebase(ref.child(deckId)).$asArray();
 			},
-			delete: function (card) {
-				console.log("delete service");
-				return decks.$remove(card);
+			delete: function (card, gameId) {
+				if (gameId) {
+					for (var i = 0; i < decks.length; i++) {
+						if (decks[i].$id === gameId) {
+							for (var y = 0; y < decks[i].length; y++) {
+								if (decks[i][y].suit === card.suit && decks[i][y].value === card.value) {
+									// console.log(decks[i][y]);
+									// console.log(decks[i][y]);
+									decks[i][y].remove();
+								}
+							}
+						}
+					}
+				}
+				// return decks.child(gameId).$remove(card);
 			}
 		};
 
