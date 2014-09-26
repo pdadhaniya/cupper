@@ -18,7 +18,6 @@ app.factory('Deck',
 				return $firebase(ref.child(deckId)).$asArray();
 			},
 			delete: function (card, gameId) {
-
 				if(gameId) {
 					var itemRef = new Firebase(FIREBASE_URL + 'games/' + gameId + '/' + card.$id)
 					itemRef.remove();

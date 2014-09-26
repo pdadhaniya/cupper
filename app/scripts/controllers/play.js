@@ -243,12 +243,14 @@ app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 		Deck.delete(card, $routeParams.gameId);
 	}
 
-	$scope.nextCard = function(card) {
+	$scope.nextCard = function() {
 
 		if ($scope.game.length > 0) {
 			var cIndex = Math.floor(Math.random()*$scope.game.length);
 
 			$scope.currentCard = $scope.game[cIndex];
+
+			var card = $scope.currentCard;
 			
 			Deck.delete(card, $routeParams.gameId);
 

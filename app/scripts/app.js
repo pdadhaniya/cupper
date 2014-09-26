@@ -25,7 +25,7 @@ var app = angular
   app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/play.html',
+        templateUrl: 'views/home.html',
         controller: 'PlayCtrl'
       })
       .when('/play/:gameId', {
