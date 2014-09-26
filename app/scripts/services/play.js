@@ -20,12 +20,12 @@ app.factory('Deck',
 			delete: function (card, gameId) {
 				if (gameId) {
 					for (var i = 0; i < decks.length; i++) {
-						if (decks[i].$id === gameId) {
+						if ((decks[i].$id) && (decks[i].$id === gameId)) {
 							for (var y = 0; y < decks[i].length; y++) {
-								if (decks[i][y].suit === card.suit && decks[i][y].value === card.value) {
-									// console.log(decks[i][y]);
-									// console.log(decks[i][y]);
-									decks[i][y].remove();
+								if ((decks[i][y].suit) && (decks[i][y].suit === card.suit && decks[i][y].value === card.value)) {
+									console.log(decks[i][y]);
+									var itemRef = new Firebase(FIREBASE_URL + 'games' + '/' + gameId + '/' + y);
+									itemRef.remove();
 								}
 							}
 						}
