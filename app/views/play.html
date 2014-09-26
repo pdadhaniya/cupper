@@ -1,0 +1,26 @@
+
+
+<!-- <div ng-repeat="card in deck">
+{{ card.value}} & {{ card.suit }}
+</div>
+ -->
+
+ <div class="turn-container">
+ 	<div class="card-container">
+ 		<div class="value">
+ 			{{ currentCard.value }}
+ 		</div>
+ 		<div class="suit">
+ 			{{ currentCard.suit }}
+ 		</div>
+ 	</div>
+ 	<div class="player-container">
+ 		<h3>{{ currentPlayer.username }}</h3>
+ 	</div>
+ </div>
+
+
+<form ng-submit="nextCard()">
+	<input type="submit" value="get next card" />
+</form>
+
