@@ -9,7 +9,7 @@
  *
  * Main module of the application.
  */
- 
+
 var app = angular
   .module('cupperApp', [
     'ngAnimate',
@@ -28,7 +28,7 @@ var app = angular
         templateUrl: 'views/play.html',
         controller: 'PlayCtrl'
       })
-      .when('/play/:id', {
+      .when('/play/:gameId', {
         templateUrl: 'views/play.html',
         controller: 'PlayCtrl'
       })

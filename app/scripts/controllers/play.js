@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PlayCtrl', function ($scope, Deck) {
+app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 
 	$scope.deck = [
 		{
@@ -224,15 +224,30 @@ app.controller('PlayCtrl', function ($scope, Deck) {
 
 	$scope.card = {value: '', suit: ''};
 
+	$scope.allDecks = Deck.all;
+
+	if ($routeParams.gameId) {
+		$scope.game = Deck.find($routeParams.gameId, "callback");
+		
+	}
+
 	var pIndex = 0;
 
-	$scope.nextCard = function() {
+	$scope.startGame = function() {
+		Deck.create($scope.deck).then(function (ref) {
+			console.log("added to db");
+			$location.path('/play/' + ref.name());
+		})
+	}
 
-		if ($scope.deck.length > 0) {
-			var cIndex = Math.floor(Math.random()*$scope.deck.length);
+	$scope.nextCard = function(card) {
 
-			$scope.currentCard = $scope.deck[cIndex];
-			$scope.deck.splice(cIndex, 1);
+		if ($scope.game.length > 0) {
+			var cIndex = Math.floor(Math.random()*$scope.game.length);
+
+			$scope.currentCard = $scope.game[cIndex];
+			
+			Deck.delete(card);
 
 			if (pIndex >= $scope.users.length-1 ) {
 				pIndex = 0;
@@ -241,13 +256,14 @@ app.controller('PlayCtrl', function ($scope, Deck) {
 			}
 
 			$scope.currentPlayer = $scope.users[pIndex];
-		} else {
-			$scope.currentCard.value = "";
-			$scope.currentCard.suit = "Deck Empty";
-			$scope.currentPlayer.username = "Game Over";
 		}
 		
 	};
+
+
+	// $scope.deleteDeck = function(card) {
+	// 	Deck.delete(card);
+	// }
 
 
 	// $scope.addCard = function () {

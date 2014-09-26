@@ -5,6 +5,25 @@
 </div>
  -->
 
+ <div ng-repeat="card in game">
+ {{ card.value }} of {{ card.suit }} 
+ <a ng-click="">delete</a>
+ </div>
+
+<!-- all decks
+<div ng-repeat="deck in allDecks">
+{{ deck }}
+</div> -->
+<!-- 
+<a ng-click="deleteCard(deck)">delete deck</a>
+
+ -->
+
+
+ <form ng-submit="startGame()">
+ 	<input type="submit" value="start game" />
+ </form>
+
  <div class="turn-container">
  	<div class="card-container">
  		<div class="value">
@@ -20,7 +39,4 @@
  </div>
 
 
-<form ng-submit="nextCard()">
-	<input type="submit" value="get next card" />
-</form>
 
