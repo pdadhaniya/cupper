@@ -10,16 +10,18 @@
  * Main module of the application.
  */
 
-var app = angular
-  .module('cupperApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch',
-    'firebase'
-  ]);
+// var app = angular
+//   .module('cupperApp', [
+//     'ngAnimate',
+//     'ngCookies',
+//     'ngResource',
+//     'ngRoute',
+//     'ngSanitize',
+//     'ngTouch',
+//     'firebase'
+//   ]);
+
+var app = angular.module("cupperApp", ["firebase", "ngCookies", "ngResource", "ngRoute", "ngSanitize"]);
 
 
   app.config(function ($routeProvider) {
@@ -29,7 +31,7 @@ var app = angular
         controller: 'PlayCtrl'
       })
       .when('/play/:gameId', {
-        templateUrl: 'views/play.html',
+        templateUrl: 'views/test.html',
         controller: 'PlayCtrl'
       })
       .otherwise({

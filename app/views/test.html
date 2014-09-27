@@ -1,0 +1,19 @@
+
+<div ng-repeat="card in myDeck | limitTo:quantity">
+	<div>{{ card.value }} of {{ card.suit }}</div>
+</div>
+
+<form ng-submit="addUser()">
+	<input type="text" ng-model="user.username" placeholder="enter username..."/>
+	<input type="submit" value="add user"/>
+</form>
+
+<ul ng-repeat="user in myUsers">
+	<li>{{ user.username}}</li>
+</ul>
+
+current player's turn: {{ currentUser.username }}
+
+<p>
+<a ng-click="nextCard()">show next card</a>
+</p>
