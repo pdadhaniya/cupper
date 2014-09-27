@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
+app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams, Deck, User, FIREBASE_URL) {
 
 	$scope.deck = [
 		{
@@ -210,76 +210,60 @@ app.controller('PlayCtrl', function ($scope, $location, $routeParams, Deck) {
 		{
 			suit: 'Clubs',
 			value: "Ace",
-		}
-	];
-
-	$scope.users = [
-		{
-			username: "Parag"
 		},
-		{
-			username: "Jon"
-		}
 	];
 
-	$scope.card = {value: '', suit: ''};
-
-	$scope.allDecks = Deck.all;
-
-	if ($routeParams.gameId) {
-		$scope.game = Deck.find($routeParams.gameId, $routeParams.gameId);
-	}
-
-	var pIndex = 0;
-
-	$scope.startGame = function() {
-		Deck.create($scope.deck).then(function (ref) {
-			console.log("added to db");
-			$location.path('/play/' + ref.name());
-		})
-	}
-
-	$scope.deleteCard = function(card) {
-		Deck.delete(card, $routeParams.gameId);
-	}
-
-	$scope.nextCard = function() {
-
-		if ($scope.game.length > 0) {
-			var cIndex = Math.floor(Math.random()*$scope.game.length);
-
-			$scope.currentCard = $scope.game[cIndex];
-
-			var card = $scope.currentCard;
-			
-			Deck.delete(card, $routeParams.gameId);
-
-			if (pIndex >= $scope.users.length-1 ) {
-				pIndex = 0;
-			} else {
-				pIndex ++; 
-			}
-
-			$scope.currentPlayer = $scope.users[pIndex];
-		}
-		
+	var shuffle  = function(o) {
+    for(var j, x, i = o.length; i; j = Math.floor(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
+    return o;
 	};
 
+	// set up three way binding
+	var gameRef = new Firebase(FIREBASE_URL + 'games/' + $routeParams.gameId);
+  var gameSync = $firebase(gameRef);
+  $scope.myDeck = gameSync.$asArray();
 
-	// $scope.deleteDeck = function(card) {
-	// 	Deck.delete(card);
-	// }
+  var userRef = new Firebase(FIREBASE_URL + 'users/' + $routeParams.gameId);
+  var userSync = $firebase(userRef);
+  $scope.myUsers = userSync.$asArray();
 
+  $scope.user = {username: ''};
+  // set first user on page load
+  $scope.myUsers.$loaded().then(function(){
+  	console.log('setting first user');
+		$scope.currentUser = $scope.myUsers[0];
+  });
 
-	// $scope.addCard = function () {
-	//   // Deck.create($scope.deck).then(function () {
-	//   // 	console.log("added");
-	//   // });
-	// 	$scope.deck.push($scope.card);
-	// 	$scope.card = {value: '', suit: ''};
-	// };
+  $scope.quantity = 0;
 
-	// $scope.deletePost = function (post) {
-	// 	Post.delete(post);
-	// }
+  var userIndex = 1;
+
+  $scope.nextCard = function() {
+  	console.log('removing card from db');
+  	$scope.myDeck.$remove(0);
+
+  	$scope.quantity = 1;
+
+  	if (userIndex > $scope.myUsers.length -1) {
+  		userIndex = 0;
+  	}
+
+  	$scope.currentUser = $scope.myUsers[userIndex];
+
+  	userIndex ++;
+  	
+  }
+
+	$scope.startGame = function() {
+		Deck.create(shuffle($scope.deck)).then(function (ref) {
+			console.log("game added to database");
+				$location.path('/play/' + ref.name());
+		});
+	}
+
+	$scope.addUser = function() {
+		$scope.myUsers.$add($scope.user);
+		$scope.user = {username: ''};
+	};
+
 });

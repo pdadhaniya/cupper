@@ -2,6 +2,21 @@
 
 
 
+<!-- {{ currentUsers }} -->
+
+<div class="col-md-4">
+	<ul ng-repeat="user in users">
+		<li>{{ user.username }}</li>
+	</ul>
+
+	<form ng-submit="joinGame()">
+		<input type="text" ng-model="user.username" placeholder="enter username"/>
+		<input type="submit" value="join game"/>
+	</form>
+</div>
+
+
+<div class="col-md-8">
  <div class="turn-container">
  	<div class="card-container">
  		<div class="suit">
@@ -16,5 +31,11 @@
  	</div>
  </div>
 
+<!-- {{ currentCard.suit }}
+{{ currentCard.value }} -->
 
+</div>
+
+
+{{ games }}
 
