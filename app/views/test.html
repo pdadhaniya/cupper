@@ -1,19 +1,36 @@
 
-<div ng-repeat="card in myDeck | limitTo:quantity">
-	<div>{{ card.value }} of {{ card.suit }}</div>
+
+<div class="col-md-2 text-center">
+  <h4>Rules</h4>
+  <button class="btn btn-info">Show Rule</button>
 </div>
 
-<form ng-submit="addUser()">
-	<input type="text" ng-model="user.username" placeholder="enter username..."/>
-	<input type="submit" value="add user"/>
-</form>
 
-<ul ng-repeat="user in myUsers">
-	<li>{{ user.username}}</li>
-</ul>
+<div class="col-md-8 text-center">
+  <h4>Cards</h4>
+    <p>It's {{ currentUser.username }}'s turn!</p>
 
-current player's turn: {{ currentUser.username }}
+    <p>
+      <button class="btn btn-primary" ng-click="nextCard()">Draw a Card</button>
+    </p>
 
-<p>
-<a ng-click="nextCard()">show next card</a>
-</p>
+  <div ng-repeat="card in myDeck | limitTo:quantity">
+    <div class="chosenCard">{{ card.value }}♥ of {{ card.suit }}</div>
+  </div>
+
+</div>
+
+
+<div class="col-md-2 text-center">
+  <h4>Players</h4>
+
+    <form ng-submit="addUser()">
+      <input class = "form-control" type="text" ng-model="user.username" placeholder="Enter Name..."/>
+      <input class="btn btn-primary playerAdd" type="submit" value="Add Player"/>
+    </form>
+
+    <ul ng-repeat="user in myUsers" class="list-unstyled">
+      <li>{{ user.username}}</li>
+    </ul>
+
+</div>
