@@ -61,6 +61,10 @@ body {
   display: none;
 }
 
+.topheight h3 {
+  display: none;
+}
+
 #middle {
   /*border: 1px solid black;*/
   min-height: 600px;

@@ -354,6 +354,7 @@ app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams,
 
   	$scope.currentUser = $scope.myUsers[userIndex];
 
+  	$('.topheight h3').show("slow");
   	userIndex ++;
   	
   }
