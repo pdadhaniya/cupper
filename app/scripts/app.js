@@ -10,16 +10,6 @@
  * Main module of the application.
  */
 
-// var app = angular
-//   .module('cupperApp', [
-//     'ngAnimate',
-//     'ngCookies',
-//     'ngResource',
-//     'ngRoute',
-//     'ngSanitize',
-//     'ngTouch',
-//     'firebase'
-//   ]);
 
 var app = angular.module("cupperApp", ["firebase", "ngCookies", "ngResource", "ngRoute", "ngSanitize"]);
 
@@ -31,7 +21,7 @@ var app = angular.module("cupperApp", ["firebase", "ngCookies", "ngResource", "n
         controller: 'PlayCtrl'
       })
       .when('/play/:gameId', {
-        templateUrl: 'views/test.html',
+        templateUrl: 'views/play.html',
         controller: 'PlayCtrl'
       })
       .otherwise({

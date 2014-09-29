@@ -354,7 +354,7 @@ app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams,
 
   	$scope.currentUser = $scope.myUsers[userIndex];
 
-  	$('.topheight h3').show("slow");
+  	$('.topheight h3').show("fast");
   	userIndex ++;
   	
   }
@@ -371,9 +371,9 @@ app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams,
 		$scope.user = {username: ''};
 	};
 
-	$('.rulebutton').click(function() {
-		$('.rule').toggle("slow");
-	});
 
+ $('.rule-button').click(function() {
+    $('.rule .lead').toggleClass('show');
+  });
 
 });

@@ -3,16 +3,22 @@
 }*/
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
+.home-bg {
+  background: url("http://cmcforum.com/wp-content/uploads/2010/10/RedCup.jpg");
+  min-height: 1200px;
+}
+.play-bg {
+  background: #F6F6F6;
+}
+.card-container {
+  background: #E8E8E8;
+}
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
 }
 
 /* Custom page header */
@@ -30,9 +36,6 @@ body {
 /* Custom page footer */
 .footer {
   padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-  text-align: center;
 }
 
 /* Customize container */
@@ -47,18 +50,11 @@ body {
 
 .start {
   display: block;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 .topheight {
-  height: 140px;
   position: relative;
-  /*margin-bottom: 10px;*/
-}
-
-.rule {
-  display: none;
+  margin-bottom: 10px;
 }
 
 .topheight h3 {
@@ -75,9 +71,24 @@ body {
   margin-bottom: 10px;
 }
 
+.show {
+  display: block;
+}
+
+.rule {
+  margin: 20px 0;
+}
+.rule .lead {
+  display: none;
+  margin: 10px 0;
+}
+.player-turn {
+  margin-bottom: 25px;
+  font-size: 48px;
+}
 
 .chosenCard {
-  background-color: #fff;
+ /* background-color: #fff;
   font-family: 'Suit-Regular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   -moz-border-radius: 0.8em;
   -webkit-border-radius: 0.8em;
@@ -91,7 +102,12 @@ body {
   position: relative;
   z-index: 2;
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto;*/
+  background: #E8E8E8;
+}
+.chosenCard img {
+  width: 100%;
+  height: auto;
 }
 
 /* Main marketing message and sign up button */
@@ -137,3 +153,19 @@ body {
 }
 
 
+
+/** */
+
+.start-screen img {
+  max-width: 100%;
+  height: auto;
+}
+
+.welcome-message h2 {
+  font-size: 68px;
+  color: black;
+}
+.welcome-message .lead {
+  font-size: 36px;
+  color: black;
+}
