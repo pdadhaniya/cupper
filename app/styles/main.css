@@ -45,30 +45,29 @@ body {
   margin: 30px 0;
 }
 
+.start {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.topheight {
+  height: 140px;
+  position: relative;
+  /*margin-bottom: 10px;*/
+}
+
+.rule {
+  display: none;
+}
+
 #middle {
-  border: 1px solid black;
-  min-height: 500px;
+  /*border: 1px solid black;*/
+  min-height: 600px;
   padding-top: 10px;
 }
 
 .form-control {
-  margin-bottom: 10px;
-}
-
-.btn-success {
-  display: block;
-   margin-left: auto;
-   margin-right: auto;
-}
-
-
-.entryBox {
-  background-color: black;
-  color: white;
-  margin-bottom: 10px;
-}
-
-.playerAdd {
   margin-bottom: 10px;
 }
 
@@ -125,7 +124,7 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 5px;
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
