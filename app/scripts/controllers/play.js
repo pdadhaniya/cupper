@@ -371,6 +371,9 @@ app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams,
 		$scope.user = {username: ''};
 	};
 
+	$scope.removeUser = function(name) {
+		$scope.myUsers.$remove(name);
+	}
 
  $('.rule-button').click(function() {
     $('.rule .lead').toggleClass('show');
