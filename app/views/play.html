@@ -36,7 +36,7 @@
 			    </div>
 			    
 			    <ul ng-repeat="user in myUsers" class="list-unstyled">
-			      <li><h4>{{ user.username}}</h4></li>
+			      <li><h4>{{ user.username}}</h4></li><a ng-click="removeUser(user)">Remove User</a>
 			    </ul>
 
 			</div>
