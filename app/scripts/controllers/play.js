@@ -341,10 +341,13 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 
   $scope.quantity = 0;
 
-  var userIndex = 1;
+  var userIndex = 0;
 
   $scope.nextCard = function() {
   	console.log('removing card from db');
+  	// $scope.gameReady = true;
+  	$scope.firstTurn = false;
+  	$scope.gameStarted = true;
   	$scope.myDeck.$remove(0);
 
   	$scope.quantity = 1;
@@ -379,5 +382,13 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
  $('.rule-button').click(function() {
     $('.rule .lead').toggleClass('show');
   });
+
+ $scope.gameReady = true;
+ $scope.firstTurn = false;
+ $scope.gameStarted = false;
+ $scope.beginRound = function() {
+ 	$scope.gameReady = false;
+ 	$scope.firstTurn = true;
+ }
 
 }]);

@@ -3,8 +3,13 @@
 		<div class="row" id="middle">
 
 			<div class="card-container col-md-6">
-			  <div class="topheight">
-			    <h2 class="player-turn">{{ currentUser.username }}'s turn!</h2>
+				<div ng-show="gameReady" class="topheight">
+					<h2>Add Players and Click Begin!</h2>
+					<button class="btn btn-primary" ng-click="beginRound()">Begin</button>
+				</div>
+			  <div ng-hide="gameReady" class="topheight">
+			  	<h4 ng-show="firstTurn">Draw the first card {{currentUser.username}}!</h4>
+			    <h2 ng-show="gameStarted" class="player-turn">{{ currentUser.username }}'s card!</h2>
 			    <button class="btn btn-primary" ng-click="nextCard()">Draw a Card</button>
 			    <button class="btn btn-info rule-button">Show Rule</button>
 			  </div>
