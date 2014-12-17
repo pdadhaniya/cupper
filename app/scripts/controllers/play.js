@@ -334,12 +334,12 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 
   $scope.user = {username: ''};
   // set first user on page load
-  $scope.myUsers.$loaded().then(function(){
-  	console.log('setting first user');
-		$scope.currentUser = $scope.myUsers[0];
-  });
+  // $scope.myUsers.$loaded().then(function(){
+  // 	console.log('setting first user');
+		// $scope.currentUser = $scope.myUsers[0];
+  // });
 
-  $scope.quantity = 0;
+  // $scope.quantity = 0;
 
   var userIndex = 0;
 
@@ -353,16 +353,12 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 	  	$scope.gameStarted = true;
 	  	$scope.myDeck.$remove(0);
 	  	console.log($scope.myDeck.length);
-
-	  	$scope.quantity = 1;
-
+	  	// $scope.quantity = 1;
 	  	if (userIndex > $scope.myUsers.length -1) {
 	  		userIndex = 0;
 	  	}
-
 	  	$scope.currentUser = $scope.myUsers[userIndex];
-
-	  	$('.topheight h3').show("fast");
+	  	// $('.topheight h3').show("fast");
 	  	userIndex ++;
   	}
   }
