@@ -333,18 +333,10 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
   $scope.myUsers = userSync.$asArray();
 
   $scope.user = {username: ''};
-  // set first user on page load
-  // $scope.myUsers.$loaded().then(function(){
-  // 	console.log('setting first user');
-		// $scope.currentUser = $scope.myUsers[0];
-  // });
-
-  // $scope.quantity = 0;
 
   var userIndex = 0;
 
   $scope.nextCard = function() {
-  	// console.log('removing card from db');
   	if ($scope.myDeck.length === 1) {
   		$scope.myDeck.$remove(0);
   		$scope.gameOver = false;
@@ -353,20 +345,17 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 	  	$scope.gameStarted = true;
 	  	$scope.myDeck.$remove(0);
 	  	console.log($scope.myDeck.length);
-	  	// $scope.quantity = 1;
 	  	if (userIndex > $scope.myUsers.length -1) {
 	  		userIndex = 0;
 	  	}
 	  	$scope.currentUser = $scope.myUsers[userIndex];
-	  	// $('.topheight h3').show("fast");
 	  	userIndex ++;
   	}
   }
 
 	$scope.startGame = function() {
 		Deck.create(shuffle($scope.deck)).then(function (ref) {
-			console.log("game added to database");
-				$location.path('/play/' + ref.name());
+			$location.path('/play/' + ref.name());
 		});
 	}
 
