@@ -2,15 +2,11 @@
 	<div class="container">
 		<div class="row" id="middle">
 
-
-
 			<div class="card-container col-md-6">
 			  <div class="topheight">
 			    <h2 class="player-turn">{{ currentUser.username }}'s turn!</h2>
-
 			    <button class="btn btn-primary" ng-click="nextCard()">Draw a Card</button>
 			    <button class="btn btn-info rule-button">Show Rule</button>
-			
 			  </div>
 
 			  <div ng-repeat="card in myDeck | limitTo:quantity">
@@ -36,9 +32,8 @@
 			    </div>
 			    
 			    <ul ng-repeat="user in myUsers" class="list-unstyled">
-			      <li><h4>{{ user.username}}  <small><a ng-click="removeUser(user)">Remove User</a><small></h4></li>
+			      <li><h4>{{user.username}}<small><a ng-click="removeUser(user)"> Remove User</a><small></h4></li>
 			    </ul>
-
 			</div>
 
 		</div>

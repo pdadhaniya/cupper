@@ -32,19 +32,14 @@ app.factory('User',
 					var matched = users.filter(function(user) {
 						return user.gameId === gameId;
 					})
-
 					if (callback) {
 						callback(matched);
 					}
-
 					return matched;
 				})
 			},
 			delete: function (user, gameId) {
-
 			}
 		};
-
 		return User;
-
 });

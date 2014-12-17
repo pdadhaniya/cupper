@@ -1,6 +1,7 @@
-'use strict';
+// 'use strict';
 
-app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams, Deck, User, FIREBASE_URL) {
+app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 'Deck', 'User', 'FIREBASE_URL',
+	function($scope, $firebase, $location, $routeParams, Deck, User, FIREBASE_URL) {
 
 	$scope.deck = [
 		{
@@ -379,4 +380,4 @@ app.controller('PlayCtrl', function ($scope, $firebase, $location, $routeParams,
     $('.rule .lead').toggleClass('show');
   });
 
-});
+}]);
