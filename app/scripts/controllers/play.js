@@ -340,6 +340,11 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
   	if ($scope.myDeck.length === 1) {
   		$scope.myDeck.$remove(0);
   		$scope.gameOver = false;
+  	} else if ($scope.myDeck.length === 52 && userIndex === 0) {
+  		$scope.firstTurn = false;
+  		$scope.gameStarted = true;
+  		$scope.currentUser = $scope.myUsers[userIndex];
+  		userIndex ++;
   	} else {
 	  	$scope.firstTurn = false;
 	  	$scope.gameStarted = true;
