@@ -3,6 +3,7 @@
 }*/
 /* Space out content a bit */
 body {
+  background-color: #f6f6f6;
 }
 
 .home-bg {
@@ -30,7 +31,7 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
+  /*padding-bottom: 19px;*/
 }
 
 /* Custom page footer */
