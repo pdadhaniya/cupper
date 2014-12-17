@@ -169,3 +169,7 @@ body {
   font-size: 36px;
   color: black;
 }
+
+a:hover {
+  cursor: pointer; cursor: hand;
+}

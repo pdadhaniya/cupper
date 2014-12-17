@@ -344,23 +344,27 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
   var userIndex = 0;
 
   $scope.nextCard = function() {
-  	console.log('removing card from db');
-  	// $scope.gameReady = true;
-  	$scope.firstTurn = false;
-  	$scope.gameStarted = true;
-  	$scope.myDeck.$remove(0);
+  	// console.log('removing card from db');
+  	if ($scope.myDeck.length === 1) {
+  		$scope.myDeck.$remove(0);
+  		$scope.gameOver = false;
+  	} else {
+	  	$scope.firstTurn = false;
+	  	$scope.gameStarted = true;
+	  	$scope.myDeck.$remove(0);
+	  	console.log($scope.myDeck.length);
 
-  	$scope.quantity = 1;
+	  	$scope.quantity = 1;
 
-  	if (userIndex > $scope.myUsers.length -1) {
-  		userIndex = 0;
+	  	if (userIndex > $scope.myUsers.length -1) {
+	  		userIndex = 0;
+	  	}
+
+	  	$scope.currentUser = $scope.myUsers[userIndex];
+
+	  	$('.topheight h3').show("fast");
+	  	userIndex ++;
   	}
-
-  	$scope.currentUser = $scope.myUsers[userIndex];
-
-  	$('.topheight h3').show("fast");
-  	userIndex ++;
-  	
   }
 
 	$scope.startGame = function() {
@@ -386,9 +390,11 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
  $scope.gameReady = true;
  $scope.firstTurn = false;
  $scope.gameStarted = false;
+ $scope.gameOver = true;
  $scope.beginRound = function() {
  	$scope.gameReady = false;
  	$scope.firstTurn = true;
+ 	$scope.currentUser = $scope.myUsers[0]
  }
 
 }]);
