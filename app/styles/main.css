@@ -80,7 +80,7 @@ body {
   margin: 20px 0;
 }
 .rule .lead {
-  display: none;
+  /*display: none;*/
   margin: 10px 0;
 }
 .player-turn {

@@ -337,6 +337,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
   var userIndex = 0;
 
   $scope.nextCard = function() {
+  	$scope.cardRule = true;
   	if ($scope.myDeck.length === 1) {
   		$scope.myDeck.$remove(0);
   		$scope.gameOver = false;
@@ -373,6 +374,14 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		$scope.myUsers.$remove(name);
 	}
 
+	$scope.showRule = function() {
+		if ($scope.cardRule) {
+			$scope.cardRule = false;
+		} else {
+			$scope.cardRule = true;
+		}
+	}
+
  $('.rule-button').click(function() {
     $('.rule .lead').toggleClass('show');
   });
@@ -381,6 +390,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
  $scope.firstTurn = false;
  $scope.gameStarted = false;
  $scope.gameOver = true;
+ $scope.cardRule = true;
  $scope.beginRound = function() {
  	$scope.gameReady = false;
  	$scope.firstTurn = true;

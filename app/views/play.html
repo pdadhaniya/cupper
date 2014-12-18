@@ -38,12 +38,12 @@
 				  	<h4 ng-show="firstTurn">Draw the first card {{currentUser.username}}!</h4>
 				    <h2 ng-show="gameStarted" class="player-turn">{{ currentUser.username }}'s card!</h2>
 				    <button class="btn btn-primary" ng-click="nextCard()">Draw a Card</button>
-				    <button class="btn btn-info rule-button">Show Rule</button>
+				    <button class="btn btn-info rule-button" ng-click="showRule()">Show Rule</button>
 				  </div>
 			  </div>
 
 			  <div ng-show="gameStarted" ng-repeat="card in myDeck | limitTo:1">
-			  	<div class="rule">
+			  	<div ng-hide="cardRule" class="rule">
 			  		<p class="lead">{{card.rule}}</p>
 			  	</div>
 			    <div class="chosenCard">
