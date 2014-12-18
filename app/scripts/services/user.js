@@ -1,12 +1,10 @@
 // 'use strict';
 
-// app.factory('User', ['$firebase', 'FIREBASE_URL',
-//   function($firebase, FIREBASE_URL) {
+// app.factory('User',
+//   function ($firebase, FIREBASE_URL) {
 //     var ref = new Firebase(FIREBASE_URL + 'users');
-
 //     var users = $firebase(ref).$asArray();
-
-//     var User = {
+//     return {
 //       all: users,
 //       create: function (user) {
 //         return users.$add(user);
@@ -25,5 +23,4 @@
 //       delete: function (user, gameId) {
 //       }
 //     };
-//     return User;
-// }]);
+// });
