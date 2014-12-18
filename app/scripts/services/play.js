@@ -6,14 +6,20 @@ app.factory('Deck',
 
 		var decks = $firebase(ref).$asArray();
 
-		var Deck = {
+		// var Deck = {
+		// 	all: decks,
+		// 	create: function (deck) {
+		// 		return decks.$add(deck);
+		// 	},
+		// };
+
+		// return Deck;
+		return {
 			all: decks,
 			create: function (deck) {
 				return decks.$add(deck);
-			},
+			}
 		};
-
-		return Deck;
 });
 
 app.factory('User',
@@ -22,7 +28,27 @@ app.factory('User',
 
 		var users = $firebase(ref).$asArray();
 
-		var User = {
+		// var User = {
+		// 	all: users,
+		// 	create: function (user) {
+		// 		return users.$add(user);
+		// 	},
+		// 	find: function (gameId, callback) {
+		// 		users.$loaded().then(function() {
+		// 			var matched = users.filter(function(user) {
+		// 				return user.gameId === gameId;
+		// 			})
+		// 			if (callback) {
+		// 				callback(matched);
+		// 			}
+		// 			return matched;
+		// 		})
+		// 	},
+		// 	delete: function (user, gameId) {
+		// 	}
+		// };
+		// return User;
+		return {
 			all: users,
 			create: function (user) {
 				return users.$add(user);
@@ -41,5 +67,4 @@ app.factory('User',
 			delete: function (user, gameId) {
 			}
 		};
-		return User;
 });

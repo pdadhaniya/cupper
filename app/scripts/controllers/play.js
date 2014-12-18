@@ -73,7 +73,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		{
 			suit: 'Hearts ♥',
 			value: "♥ 2",
-			rule: "2 is You! Take 2 sips.",
+			rule: "2 is You! Give 2 sips.",
 			pic: 'images/hearts-two.png'
 		},
 		{
@@ -151,7 +151,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		{
 			suit: 'Diamonds ♦',
 			value: "♦ 2",
-			rule: "2 is You! Take 2 sips.",
+			rule: "2 is You! Give 2 sips.",
 			pic: 'images/diamonds-two.png'
 		},
 		{
@@ -229,7 +229,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		{
 			suit: 'Spades ♠',
 			value: "♠ 2",
-			rule: "2 is You! Take 2 sips.",
+			rule: "2 is You! Give 2 sips.",
 			pic: "images/spades-two.png",
 		},
 		{
@@ -307,7 +307,7 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		{
 			suit: 'Clubs ♣',
 			value: "♣ 2",
-			rule: "2 is You! Take 2 sips.",
+			rule: "2 is You! Give 2 sips.",
 			pic: "images/clubs-two.png",
 		},
 		{
@@ -331,10 +331,13 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
   var userRef = new Firebase(FIREBASE_URL + 'users/' + $routeParams.gameId);
   var userSync = $firebase(userRef);
   $scope.myUsers = userSync.$asArray();
-
   $scope.user = {username: ''};
-
   var userIndex = 0;
+	$scope.gameReady = true;
+	$scope.firstTurn = false;
+	$scope.gameStarted = false;
+	$scope.gameOver = true;
+	$scope.cardRule = true;
 
   $scope.nextCard = function() {
   	$scope.cardRule = true;
@@ -350,7 +353,6 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 	  	$scope.firstTurn = false;
 	  	$scope.gameStarted = true;
 	  	$scope.myDeck.$remove(0);
-	  	console.log($scope.myDeck.length);
 	  	if (userIndex > $scope.myUsers.length -1) {
 	  		userIndex = 0;
 	  	}
@@ -382,19 +384,10 @@ app.controller('PlayCtrl', ['$scope', '$firebase', '$location', '$routeParams', 
 		}
 	}
 
- $('.rule-button').click(function() {
-    $('.rule .lead').toggleClass('show');
-  });
-
- $scope.gameReady = true;
- $scope.firstTurn = false;
- $scope.gameStarted = false;
- $scope.gameOver = true;
- $scope.cardRule = true;
- $scope.beginRound = function() {
- 	$scope.gameReady = false;
- 	$scope.firstTurn = true;
- 	$scope.currentUser = $scope.myUsers[0]
- }
+	$scope.beginRound = function() {
+		$scope.gameReady = false;
+		$scope.firstTurn = true;
+		$scope.currentUser = $scope.myUsers[0]
+	}
 
 }]);
