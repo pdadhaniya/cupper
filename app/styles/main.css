@@ -3,6 +3,7 @@
 }*/
 /* Space out content a bit */
 body {
+  background-color: #f6f6f6;
 }
 
 .home-bg {
@@ -30,7 +31,7 @@ body {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 40px;
-  padding-bottom: 19px;
+  /*padding-bottom: 19px;*/
 }
 
 /* Custom page footer */
@@ -79,7 +80,7 @@ body {
   margin: 20px 0;
 }
 .rule .lead {
-  display: none;
+  /*display: none;*/
   margin: 10px 0;
 }
 .player-turn {
@@ -168,4 +169,8 @@ body {
 .welcome-message .lead {
   font-size: 36px;
   color: black;
+}
+
+a:hover {
+  cursor: pointer; cursor: hand;
 }
