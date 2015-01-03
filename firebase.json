@@ -1,6 +1,6 @@
 {
   "firebase": "amber-torch-2724",
-  "public": "app",
+  "public": "dist",
   "ignore": [
     "firebase.json",
     "**/.*",
